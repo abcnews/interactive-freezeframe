@@ -1,0 +1,61 @@
+.base {
+  video {
+    z-index: 10;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.visible {
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+.fallbackImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.attribution {
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  width: 100%;
+  text-align: right;
+  padding-right: 3px;
+  z-index: 50;
+  font-family: ABCSans, Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: white;
+  text-shadow: 0 1px 1px black;
+  opacity: 0.7;
+}
