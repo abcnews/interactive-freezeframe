@@ -50,8 +50,6 @@ export function loadFreezeframes(className, markerName) {
     };
   }
 
-  console.log('FRE', window.__freezeframes);
-
   return window.__freezeframes;
 }
 
