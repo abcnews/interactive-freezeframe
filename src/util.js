@@ -89,6 +89,9 @@ function loadPanels(nodes, initialMarker, name) {
       let configString = node.getAttribute('name').replace(new RegExp(`^${name}`), '');
       if (configString) {
         nextConfig = a2o(configString);
+        if (typeof initialMarker.align !== 'undefined' && typeof nextConfig.align === 'undefined') {
+          nextConfig.align = initialMarker.align;
+        }
         nextConfig.hash = configString;
       } else {
         // Empty marks should stop the piecemeal flow
