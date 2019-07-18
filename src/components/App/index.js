@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './styles.scss';
+import Video from '@abcnews/scrollyteller-video';
 
 const Scrollyteller = require('@abcnews/scrollyteller');
-import Video from '@abcnews/scrollyteller-video';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class App extends React.Component {
       const updates = {};
 
       if (typeof config.time !== 'undefined' && state.time !== config.time) updates.hasOverlay = false;
-      if (config.time) updates.time = config.time;
+      if (typeof config.time !== 'undefined') updates.time = config.time;
 
       return updates;
     });
@@ -81,11 +81,11 @@ export default class App extends React.Component {
           panelClassName={`Block-content u-layout u-richtext`}
           onMarker={this.onMarker}>
           <Video src={rendition.url} targetTime={time} onTargetTimeReached={this.onTargetTimeReached}>
-            {fallbackImages.map(img => {
+            {fallbackImages.map((img, index) => {
               return (
                 <img
                   className={`${styles.fallbackImage} ${time <= img.time ? styles.visible : ''}`}
-                  key={img.src}
+                  key={index}
                   src={img.src}
                 />
               );
