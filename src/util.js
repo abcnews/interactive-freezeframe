@@ -45,6 +45,7 @@ export function loadFreezeframes(className, markerName) {
 
     window.__freezeframes[id] = {
       freezeframeKey: id,
+      config,
       mountNode: createMountNode(name, className),
       panels: loadPanels(nodes, config, markerName)
     };

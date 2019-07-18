@@ -78,7 +78,7 @@ export default class App extends React.Component {
         <Scrollyteller
           panels={scrollyteller.panels}
           className={`Block is-richtext is-piecemeal ${styles.scrollyteller}`}
-          panelClassName={`Block-content u-layout u-richtext`}
+          panelClassName={`Block-content u-layout u-richtext${scrollyteller.config.theme === 'dark' ? '-invert' : ''}`}
           onMarker={this.onMarker}>
           <Video src={rendition.url} targetTime={time} onTargetTimeReached={this.onTargetTimeReached}>
             {fallbackImages.map((img, index) => {
