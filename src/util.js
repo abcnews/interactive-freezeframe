@@ -127,6 +127,7 @@ function createMountNode(id, className) {
   const mountParent = document.querySelector(`[name^=${selector}]`);
   const mountNode = document.createElement('div');
   mountNode.className = className || '';
+  mountNode.style.setProperty('margin-bottom', '-3rem');
   mountParent.parentNode.insertBefore(mountNode, mountParent);
 
   return mountNode;

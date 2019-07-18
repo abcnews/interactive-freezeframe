@@ -53,13 +53,13 @@ export default class App extends React.Component {
     if (isLandscape) {
       rendition = freezeframe.renditions.filter(r => r.width > r.height)[0];
     } else {
-      rendition = freezeframe.renditions.filter(r => r.width < r.height)[0];
+      rendition = freezeframe.renditions.filter(r => r.width <= r.height)[0];
     }
     const renditionIndex = freezeframe.renditions.indexOf(rendition);
 
     let overlays = {};
     freezeframe.marks.forEach(mark => {
-      if (mark.renditions[renditionIndex].svg) {
+      if (mark.renditions[renditionIndex] && mark.renditions[renditionIndex].svg) {
         overlays['overlay' + mark.time] = mark.renditions[renditionIndex].svg;
       }
     });
