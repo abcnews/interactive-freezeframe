@@ -84,9 +84,7 @@ export default class App extends React.Component {
             {fallbackImages.map((img, index) => {
               return (
                 <img
-                  className={`${styles.fallbackImage} ${
-                    time <= img.time || index === fallbackImages.length - 1 ? styles.visible : ''
-                  }`}
+                  className={`${styles.fallbackImage} ${time <= img.time || index === 0 ? styles.visible : ''}`}
                   key={index}
                   src={img.src}
                 />
