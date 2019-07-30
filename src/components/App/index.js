@@ -67,8 +67,8 @@ export default class App extends React.Component {
     const fallbackImages = freezeframe.marks
       .map(mark => {
         return {
-          time: mark.time,
-          src: mark.fallback
+          time: mark.time * 1000,
+          src: mark.renditions[renditionIndex].fallback
         };
       })
       .reverse();
@@ -84,7 +84,9 @@ export default class App extends React.Component {
             {fallbackImages.map((img, index) => {
               return (
                 <img
-                  className={`${styles.fallbackImage} ${time <= img.time ? styles.visible : ''}`}
+                  className={`${styles.fallbackImage} ${
+                    time <= img.time || index === fallbackImages.length - 1 ? styles.visible : ''
+                  }`}
                   key={index}
                   src={img.src}
                 />
