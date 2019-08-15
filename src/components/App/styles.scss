@@ -13,22 +13,7 @@
   transition: opacity 0.3s ease;
 
   &.visible {
-    animation-name: pulse;
-    animation-duration: 2s;
-    animation-timing-function: ease;
-    animation-iteration-count: infinite;
-  }
-
-  @keyframes pulse {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0.6;
-    }
-    100% {
-      opacity: 0;
-    }
+    opacity: 1;
   }
 }
 
