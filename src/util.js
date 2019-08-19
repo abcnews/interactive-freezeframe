@@ -15,40 +15,40 @@ export function loadFreezeframes(className, markerName) {
     window.__freezeframes = {};
 
     // Grab any nodes between #freezeframe<ID> and #endfreezeframe
-    const firstNode = document.querySelector(`[name^=${selector}]`);
+    [].slice.call(document.querySelectorAll(`[name^=${selector}]`)).forEach(firstNode => {
+      const id = firstNode.getAttribute('name').match(/freezeframe(\d+)/)[1];
+      const config = a2o(firstNode.getAttribute('name').slice((selector + id).length));
 
-    const id = firstNode.getAttribute('name').match(/freezeframe(\d+)/)[1];
-    const config = a2o(firstNode.getAttribute('name').slice((selector + id).length));
+      let node = firstNode.nextSibling;
+      let nodes = [];
+      let hasMoreContent = true;
 
-    let node = firstNode.nextSibling;
-    let nodes = [];
-    let hasMoreContent = true;
-
-    while (hasMoreContent && node) {
-      if (!node.tagName) {
-        node = node.nextSibling;
-        continue;
-      }
-      if ((node.getAttribute('name') || '').indexOf(`endfreezeframe`) > -1) {
-        hasMoreContent = false;
-      } else {
-        if (config.captions === 'none') {
-          // Not sure why this was in here but putting it behind an optional flag
-          [].slice.apply(node.querySelectorAll('.inline-caption')).forEach(child => {
-            child.parentNode.removeChild(child);
-          });
+      while (hasMoreContent && node) {
+        if (!node.tagName) {
+          node = node.nextSibling;
+          continue;
         }
-        nodes.push(node);
-        node = node.nextSibling;
+        if ((node.getAttribute('name') || '').indexOf(`endfreezeframe`) > -1) {
+          hasMoreContent = false;
+        } else {
+          if (config.captions === 'none') {
+            // Not sure why this was in here but putting it behind an optional flag
+            [].slice.apply(node.querySelectorAll('.inline-caption')).forEach(child => {
+              child.parentNode.removeChild(child);
+            });
+          }
+          nodes.push(node);
+          node = node.nextSibling;
+        }
       }
-    }
 
-    window.__freezeframes[id] = {
-      freezeframeKey: id,
-      config,
-      mountNode: createMountNode(name, className),
-      panels: loadPanels(nodes, config, markerName)
-    };
+      window.__freezeframes[id] = {
+        freezeframeKey: id,
+        config,
+        mountNode: createMountNode(name, className),
+        panels: loadPanels(nodes, config, markerName)
+      };
+    });
   }
 
   return window.__freezeframes;
