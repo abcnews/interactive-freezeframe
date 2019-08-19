@@ -45,7 +45,7 @@ export function loadFreezeframes(className, markerName) {
       window.__freezeframes[id] = {
         freezeframeKey: id,
         config,
-        mountNode: createMountNode(name, className),
+        mountNode: createMountNode(id, className),
         panels: loadPanels(nodes, config, markerName)
       };
     });
@@ -123,7 +123,7 @@ function loadPanels(nodes, initialMarker, name) {
  * @param {string} className
  */
 function createMountNode(id, className) {
-  const selector = `freezeframe${name}`;
+  const selector = `freezeframe${id}`;
   const mountParent = document.querySelector(`[name^=${selector}]`);
   const mountNode = document.createElement('div');
   mountNode.className = className || '';
