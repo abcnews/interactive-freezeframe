@@ -12,4 +12,8 @@ function init() {
   });
 }
 
-init();
+if (window.__ODYSSEY__) {
+  init();
+} else {
+  window.addEventListener('odyssey:api', () => init());
+}
