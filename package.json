@@ -1,28 +1,31 @@
 {
-	"name": "interactive-freezeframe",
-	"version": "1.4.1",
-	"description": "Control the playback of a video with a scrollyteller",
-	"license": "MIT",
-	"private": true,
-	"contributors": [
-		"Nathan Hoad <nathan@nathanhoad.net>"
-	],
-	"aunty": {
-		"type": "react"
-	},
-	"scripts": {
-		"start": "aunty serve",
-		"test": "aunty test"
-	},
-	"devDependencies": {
-		"@abcnews/aunty": "^10.5.1",
-		"react-test-renderer": "^16.8.6"
-	},
-	"dependencies": {
-		"@abcnews/alternating-case-to-object": "^2.0.0",
-		"@abcnews/scrollyteller": "^1.4.4",
-		"@abcnews/scrollyteller-video": "^2.0.2",
-		"react": "^16.8.6",
-		"react-dom": "^16.8.6"
-	}
+  "name": "interactive-freezeframe",
+  "version": "1.4.1",
+  "description": "Control the playback of a video with a scrollyteller",
+  "license": "MIT",
+  "private": true,
+  "contributors": [
+    "Nathan Hoad <nathan@nathanhoad.net>"
+  ],
+  "aunty": {
+    "type": "react",
+    "serve": {
+      "hot": false
+    }
+  },
+  "scripts": {
+    "start": "aunty serve",
+    "test": "aunty test"
+  },
+  "devDependencies": {
+    "@abcnews/aunty": "^10.5.1",
+    "react-test-renderer": "^16.8.6"
+  },
+  "dependencies": {
+    "@abcnews/alternating-case-to-object": "^2.0.0",
+    "@abcnews/scrollyteller": "^1.4.4",
+    "@abcnews/scrollyteller-video": "^2.0.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
 }

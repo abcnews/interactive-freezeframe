@@ -55,7 +55,9 @@ export default class App extends React.Component {
     } else {
       rendition = freezeframe.renditions.filter(r => r.width <= r.height)[0];
     }
-    const renditionIndex = freezeframe.renditions.indexOf(rendition);
+
+    const renditionIndex = rendition ? freezeframe.renditions.indexOf(rendition) : 0;
+    rendition = freezeframe.renditions[renditionIndex];
 
     let overlays = {};
     freezeframe.marks.forEach(mark => {
