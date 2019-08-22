@@ -24,7 +24,7 @@
 	"dependencies": {
 		"@abcnews/alternating-case-to-object": "^2.0.0",
 		"@abcnews/scrollyteller": "^1.4.4",
-		"@abcnews/scrollyteller-video": "^2.0.2",
+		"@abcnews/scrollyteller-video": "^2.1.0",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6"
 	}
