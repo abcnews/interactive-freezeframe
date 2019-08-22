@@ -45,7 +45,7 @@ export function loadFreezeframes(className, markerName) {
       window.__freezeframes[id] = {
         freezeframeKey: id,
         config,
-        mountNode: createMountNode(id, className),
+        mountNode: createMountNode(id, className, config),
         panels: loadPanels(nodes, config, markerName)
       };
     });
@@ -121,13 +121,16 @@ function loadPanels(nodes, initialMarker, name) {
  * Create a node to mount a scrollyteller on
  * @param {string} name
  * @param {string} className
+ * @param {object} config the alternating case config from the hash marker
  */
-function createMountNode(id, className) {
+function createMountNode(id, className, config) {
   const selector = `freezeframe${id}`;
   const mountParent = document.querySelector(`[name^=${selector}]`);
   const mountNode = document.createElement('div');
   mountNode.className = className || '';
-  mountNode.style.setProperty('margin-bottom', '-3rem');
+  if (config.bottom === 'collapse') {
+    mountNode.style.setProperty('margin-bottom', '-3rem');
+  }
   mountParent.parentNode.insertBefore(mountNode, mountParent);
 
   return mountNode;
