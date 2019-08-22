@@ -1,6 +1,6 @@
 {
 	"name": "interactive-freezeframe",
-	"version": "1.4.2",
+	"version": "1.4.3",
 	"description": "Control the playback of a video with a scrollyteller",
 	"license": "MIT",
 	"private": true,
