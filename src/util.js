@@ -37,7 +37,13 @@ export function loadFreezeframes(className, markerName) {
               child.parentNode.removeChild(child);
             });
           }
-          nodes.push(node);
+          // Not sure about this either - some images on mobile are treated differently by the templates
+          // and show up as embed-content
+          if (node.className && node.className.indexOf('embed-content') > -1 && node.querySelector('img')) {
+            nodes.push(node.querySelector('img'));
+          } else {
+            nodes.push(node);
+          }
           node = node.nextSibling;
         }
       }
