@@ -111,7 +111,7 @@ function loadPanels(nodes, initialMarker, name) {
     } else if (!node.mountable) {
       // Any other nodes just get grouped for the next marker
       nextNodes.push(node);
-      node.parentNode.removeChild(node);
+      node.parentNode && node.parentNode.removeChild(node);
     }
 
     // Any trailing nodes just get added as a last marker
