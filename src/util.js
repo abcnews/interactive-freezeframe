@@ -46,6 +46,7 @@ export function loadFreezeframes(className, markerName) {
             const p = document.createElement('p');
             p.appendChild(img);
             nodes.push(p);
+            node.parentNode.removeChild(node);
           } else {
             nodes.push(node);
           }
