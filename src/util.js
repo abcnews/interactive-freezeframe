@@ -40,7 +40,12 @@ export function loadFreezeframes(className, markerName) {
           // Not sure about this either - some images on mobile are treated differently by the templates
           // and show up as embed-content
           if (node.className && node.className.indexOf('embed-content') > -1 && node.querySelector('img')) {
-            nodes.push(node.querySelector('img'));
+            const img = node.querySelector('img');
+            img.style.setProperty('width', '100%');
+            img.removeAttribute('height');
+            const p = document.createElement('p');
+            p.appendChild(img);
+            nodes.push(p);
           } else {
             nodes.push(node);
           }
