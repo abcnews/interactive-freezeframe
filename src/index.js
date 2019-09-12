@@ -3,9 +3,8 @@ import { render } from 'react-dom';
 import App from './components/App';
 import { loadFreezeframes } from './util';
 
-const scrollytellers = loadFreezeframes('u-full', 'mark');
-
 function init() {
+  const scrollytellers = loadFreezeframes('u-full', 'mark');
   Object.keys(scrollytellers).forEach(key => {
     const scrollyteller = scrollytellers[key];
     render(<App scrollyteller={scrollyteller} />, scrollyteller.mountNode);
@@ -13,7 +12,11 @@ function init() {
 }
 
 if (window.__ODYSSEY__) {
+  console.log('didnt wait');
   init();
 } else {
-  window.addEventListener('odyssey:api', () => init());
+  window.addEventListener('odyssey:api', () => {
+    console.log('waited');
+    init();
+  });
 }
