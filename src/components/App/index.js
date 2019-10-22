@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
 import Video from '@abcnews/scrollyteller-video';
-
-const Scrollyteller = require('@abcnews/scrollyteller');
+import Scrollyteller from '@abcnews/scrollyteller';
 
 export default class App extends React.Component {
   constructor(props) {

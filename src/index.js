@@ -12,11 +12,7 @@ function init() {
 }
 
 if (window.__ODYSSEY__) {
-  console.log('didnt wait');
   init();
 } else {
-  window.addEventListener('odyssey:api', () => {
-    console.log('waited');
-    init();
-  });
+  window.addEventListener('odyssey:api', init);
 }
