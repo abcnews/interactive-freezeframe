@@ -23,7 +23,7 @@
 	},
 	"dependencies": {
 		"@abcnews/alternating-case-to-object": "^2.0.0",
-		"@abcnews/scrollyteller": "^2.0.3",
+		"@abcnews/scrollyteller": "^1.4.3",
 		"@abcnews/scrollyteller-video": "^2.1.0",
 		"react": "^16.10.2",
 		"react-dom": "^16.10.2"
