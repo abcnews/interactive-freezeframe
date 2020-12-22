@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './styles.scss';
 import Video from '@abcnews/scrollyteller-video';
 import Scrollyteller from '@abcnews/scrollyteller';
+import styles from './styles.scss';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -80,12 +80,14 @@ export default class App extends React.Component {
           panels={scrollyteller.panels}
           className={`Block is-richtext is-piecemeal ${styles.scrollyteller}`}
           panelClassName={`Block-content u-layout u-richtext${scrollyteller.config.theme === 'dark' ? '-invert' : ''}`}
-          onMarker={this.onMarker}>
+          onMarker={this.onMarker}
+        >
           <Video
             className={styles.video}
             src={rendition.url}
             targetTime={time}
-            onTargetTimeReached={this.onTargetTimeReached}>
+            onTargetTimeReached={this.onTargetTimeReached}
+          >
             {fallbackImages.map((img, index) => {
               return (
                 <img

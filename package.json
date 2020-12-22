@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"private": true,
 	"contributors": [
-		"Nathan Hoad <nathan@nathanhoad.net>"
+		"Nathan Hoad <nathan@nathanhoad.net>",
+		"Colin Gourlay <gourlay.colin@abc.net.au>"
 	],
 	"aunty": {
 		"type": "react",
@@ -18,11 +19,12 @@
 		"test": "aunty test"
 	},
 	"devDependencies": {
-		"@abcnews/aunty": "^10.5.1",
+		"@abcnews/aunty": "^11.2.1",
 		"react-test-renderer": "^16.8.6"
 	},
 	"dependencies": {
 		"@abcnews/alternating-case-to-object": "^2.0.0",
+		"@abcnews/mount-utils": "^2.0.0",
 		"@abcnews/scrollyteller": "^1.4.3",
 		"@abcnews/scrollyteller-video": "^2.1.0",
 		"react": "^16.10.2",

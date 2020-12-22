@@ -1,4 +1,5 @@
-const a2o = require('@abcnews/alternating-case-to-object');
+import a2o from '@abcnews/alternating-case-to-object';
+import { getMountValue, isMount, selectMounts } from '@abcnews/mount-utils';
 
 /**
  * Finds and grabs any nodes between #freezeframe and #endfreezeframe
@@ -15,11 +16,12 @@ export function loadFreezeframes(className, markerName) {
     window.__freezeframes = {};
 
     // Grab any nodes between #freezeframe<ID> and #endfreezeframe
-    [].slice.call(document.querySelectorAll(`[name^=${selector}]`)).forEach(firstNode => {
-      const id = firstNode.getAttribute('name').match(/freezeframe(\d+)/)[1];
-      const config = a2o(firstNode.getAttribute('name').slice((selector + id).length));
+    selectMounts(selector, { markAsUsed: false }).forEach(mountEl => {
+      const mountValue = getMountValue(mountEl);
+      const [, id] = mountValue.match(/freezeframe(\d+)/);
+      const config = a2o(mountValue.slice((selector + id).length));
 
-      let node = firstNode.nextSibling;
+      let node = mountEl.nextSibling;
       let nodes = [];
       let hasMoreContent = true;
 
@@ -28,7 +30,7 @@ export function loadFreezeframes(className, markerName) {
           node = node.nextSibling;
           continue;
         }
-        if ((node.getAttribute('name') || '').indexOf(`endfreezeframe`) > -1) {
+        if (isMount(node, 'endfreezeframe')) {
           hasMoreContent = false;
         } else {
           if (config.captions === 'none') {
@@ -81,12 +83,12 @@ function loadPanels(nodes, initialMarker, name) {
 
   // Check the section nodes for panels and marker content
   nodes.forEach((node, index) => {
-    if (node.tagName === 'A' && node.getAttribute('name') && node.getAttribute('name').indexOf(name) === 0) {
+    if (isMount(node, name)) {
       // Found a new marker so we should commit the last one
       pushPanel();
 
       // If marker has no config then just use the previous config
-      let configString = node.getAttribute('name').replace(new RegExp(`^${name}`), '');
+      let configString = getMountValue(node, name).replace(new RegExp(`^${name}`), '');
       if (configString) {
         nextConfig = a2o(configString);
         if (typeof initialMarker.align !== 'undefined' && typeof nextConfig.align === 'undefined') {
@@ -125,7 +127,7 @@ function loadPanels(nodes, initialMarker, name) {
  */
 function createMountNode(id, className, config) {
   const selector = `freezeframe${id}`;
-  const mountParent = document.querySelector(`[name^=${selector}]`);
+  const [mountParent] = selectMounts(selector);
   const mountNode = document.createElement('div');
   mountNode.className = className || '';
   if (config.bottom === 'collapse') {
