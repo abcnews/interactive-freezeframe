@@ -1,6 +1,8 @@
 # interactive-freezeframe
 
-A project generated from [aunty](https://github.com/abcnews/aunty)'s `react` project template.
+⚠️ This project is deprecated and should no longer be used for new projects. ⚠️ 
+
+The [ease-frame](https://github.com/abcnews/ease-frame) tool and [ease-frame-runtime](https://github.com/abcnews/ease-frame-runtime/) library provide similar functionality. 
 
 ## Authors
 
